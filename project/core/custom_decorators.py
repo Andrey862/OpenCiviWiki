@@ -1,7 +1,7 @@
 from functools import wraps
 from django.utils.decorators import available_attrs
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
-from api.models import Account
+from models import Account
 
 '''
 USAGE:

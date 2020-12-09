@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 from django.conf import settings
-import api.models.account
+import models.account
 
 
 class Migration(migrations.Migration):
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('state_district', models.CharField(default=None, max_length=63, null=True)),
                 ('beta_access', models.BooleanField(default=False)),
                 ('full_account', models.BooleanField(default=False)),
-                ('profile_image', models.ImageField(default=b'profile/default.png', null=True, upload_to=api.models.account.PathAndRename(b'profile/'), blank=True)),
+                ('profile_image', models.ImageField(default=b'profile/default.png', null=True, upload_to=models.account.PathAndRename(b'profile/'), blank=True)),
             ],
         ),
 

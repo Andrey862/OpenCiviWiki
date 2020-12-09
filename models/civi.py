@@ -16,7 +16,7 @@ from .thread import Thread
 from .bill import Bill
 from .hashtag import Hashtag
 from .thread import Thread
-from core.constants import CIVI_TYPES
+from .abstract import TimeStamped, Rated
 
 
 class CiviManager(models.Manager):
@@ -83,7 +83,7 @@ class CiviManager(models.Manager):
         return sorted(queryset.all(), key=lambda c: c.score(req_acct_id), reverse=True)
 
 
-class Civi(models.Model):
+class Civi(TimeStamped, Rated, models.Model):
     objects = CiviManager()
     author = models.ForeignKey(Account, related_name='civis', default=None, null=True)
     thread = models.ForeignKey(Thread, related_name='civis', default=None, null=True)
@@ -98,14 +98,6 @@ class Civi(models.Model):
 
     title = models.CharField(max_length=255, blank=False, null=False)
     body = models.CharField(max_length=1023, blank=False, null=False)
-
-    c_type = models.CharField(max_length=31, default='problem', choices=CIVI_TYPES)
-
-    votes_vneg = models.IntegerField(default=0)
-    votes_neg = models.IntegerField(default=0)
-    votes_neutral = models.IntegerField(default=0)
-    votes_pos = models.IntegerField(default=0)
-    votes_vpos = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -128,9 +120,6 @@ class Civi(models.Model):
         return votes
 
     votes = property(_get_votes)
-
-    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    last_modified = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     @property
     def created_date_str(self):
@@ -232,6 +221,9 @@ class Civi(models.Model):
 
         return data
 
+    class Meta:
+        abstract = True
+
 
 @deconstructible
 class PathAndRename(object):
@@ -267,3 +259,19 @@ class CiviImage(models.Model):
         else:
             # NOTE: This default url will probably be changed later
             return "/static/img/no_image_md.png"
+
+
+class Problem(Civi):
+    pass
+
+class Cause(Civi):
+    pass
+
+class Solution(Civi):
+    pass
+
+class Response(Civi):
+    pass
+
+class Rebuttal(Civi):
+    pass

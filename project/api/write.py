@@ -22,8 +22,8 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.sites.shortcuts import get_current_site
 
 # civi packages
-from api.forms import UpdateProfileImage
-from api.models import Thread
+from core.forms import UpdateProfileImage
+from models import Thread
 from api.tasks import send_mass_email
 from models import Account, Activity, Category, Civi, CiviImage, Invitation, Bill
 from core.custom_decorators import require_post_params

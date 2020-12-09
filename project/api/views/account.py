@@ -2,7 +2,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from api.models import Thread, Account
+from models import Thread, Account
 from api.serializers import (
     ThreadSerializer,
     CategorySerializer,

@@ -8,8 +8,8 @@ from django.db.models import F
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template.response import TemplateResponse
 
-from api.models import Category, Account, Thread, Civi, Activity, Invitation
-from api.forms import UpdateProfileImage
+from models import Category, Account, Thread, Civi, Activity, Invitation
+from core.forms import UpdateProfileImage
 from core.constants import US_STATES
 from core.custom_decorators import beta_blocker, login_required, full_account
 

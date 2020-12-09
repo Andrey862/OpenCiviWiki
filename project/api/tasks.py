@@ -73,6 +73,6 @@ def send_mass_email(subject="", contexts=None):
 @shared_task(name="gather_vote_data")
 def gather_vote_data(bill_id):
     """ Gathers vote data """
-    from api.models.bill import Bill
+    from models.bill import Bill
     bill = Bill.objects.get(id=bill_id)
     bill.update_votes_data()

@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import api.models.civi
-import api.models.account
+import models.civi
+import models.account
 
 
 class Migration(migrations.Migration):
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=255, null=True, blank=True)),
-                ('image', models.ImageField(null=True, upload_to=api.models.civi.PathAndRename(b'/'), blank=True)),
+                ('image', models.ImageField(null=True, upload_to=models.civi.PathAndRename(b'/'), blank=True)),
                 ('created', models.DateTimeField(auto_now_add=True, null=True)),
                 ('last_modified', models.DateTimeField(auto_now=True, null=True)),
                 ('civi', models.ForeignKey(related_name='images', to='api.Civi')),
@@ -44,6 +44,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='account',
             name='profile_image',
-            field=models.ImageField(null=True, upload_to=api.models.account.PathAndRename(b'/'), blank=True),
+            field=models.ImageField(null=True, upload_to=models.account.PathAndRename(b'/'), blank=True),
         ),
     ]

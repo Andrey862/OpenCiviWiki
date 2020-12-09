@@ -3,7 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from api.models import Bill
+from models import Bill
 from api.serializers import BillSerializer
 from api.propublica import ProPublicaAPI
 from api.tasks import gather_vote_data

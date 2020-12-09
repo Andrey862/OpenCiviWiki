@@ -2,7 +2,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from api.models import Civi, CiviImage
+from models import Civi, CiviImage
 from api.serializers import CiviSerializer, CiviImageSerializer
 
 from ..utils import get_account

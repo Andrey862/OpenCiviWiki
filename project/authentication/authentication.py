@@ -14,7 +14,7 @@ from django.utils.http import int_to_base36
 from django.views.decorators.debug import sensitive_post_parameters
 
 from api.tasks import send_email
-from api.models import Account, Invitation
+from models import Account, Invitation
 from forms import AccountRegistrationForm, PasswordResetForm, RecoverUserForm
 from core.custom_decorators import require_post_params
 
